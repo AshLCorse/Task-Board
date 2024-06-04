@@ -20,6 +20,8 @@ function readProjectsFromStorage() {
   const storedProjects = JSON.parse(localStorage.getItem("projects"));
   if (Array.isArray(storedProjects) && storedProjects !== null) {
     projects = storedProjects;
+  } else {
+    projects = [];
   }
   createProjectCard();
 }
@@ -160,10 +162,8 @@ function handleProjectFormSubmit(event) {
   let projects = readProjectsFromStorage();
   if (projects === undefined) {
     projects = [newProject];
-    return;
   } else {
     projects.push(newProject);
-    return;
   }
 
   // ? Save the updated projects array to localStorage
